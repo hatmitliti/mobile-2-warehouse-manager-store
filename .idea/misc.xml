@@ -3,26 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_login.xml" value="0.1793478260869565" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/drawable/bg_corner_btn.xml" value="0.21614583333333334" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/drawable/bg_corner_edt.xml" value="0.21614583333333334" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_customer.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_export.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_import_goods.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_product.xml" value="0.18" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_statistics.xml" value="0.2" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_customer.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_export.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_import_goods.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_login.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_main.xml" value="0.22" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product.xml" value="0.18" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_statistics.xml" value="0.1641025641025641" />
+        <entry key="..\:/Users/truon/Desktop/Warehousemanager/app/src/main/res/drawable-v24/bg_corner_btn.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/Desktop/Warehousemanager/app/src/main/res/layout/items_customer.xml" value="0.24456521739130435" />
+        <entry key="..\:/Users/truon/Desktop/Warehousemanager/app/src/main/res/layout/layout_main.xml" value="0.24456521739130435" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
