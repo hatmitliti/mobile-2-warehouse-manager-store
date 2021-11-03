@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -28,7 +29,7 @@ import java.util.ArrayList;
 public class ManufacturerProduct extends AppCompatActivity {
     private EditText edtTenHang;
     private ListView lvDanhSachHang;
-    private Button btnThem,btnXoa,btnSua;
+    private Button btnThem,btnXoa,btnSua,btnBack;
     private Context context;
     private ArrayList<Manufacturer> manufacturerProductArrayList;
     private ManufacturerAdapter manufacturerAdapter;
@@ -150,6 +151,13 @@ public class ManufacturerProduct extends AppCompatActivity {
                 }
             }
         });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ManufacturerProduct.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     private Boolean checkLoopData(String data)
     {
@@ -168,5 +176,6 @@ public class ManufacturerProduct extends AppCompatActivity {
         btnThem = findViewById(R.id.btnThemProductManufacturer);
         btnXoa = findViewById(R.id.btnXoaProductManufacturer);
         btnSua = findViewById(R.id.btnSuaProductManufacturer);
+        btnBack = findViewById(R.id.backProductManufacturer);
     }
 }

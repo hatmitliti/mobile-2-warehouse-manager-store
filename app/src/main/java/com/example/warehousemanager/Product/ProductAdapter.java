@@ -72,8 +72,8 @@ public class ProductAdapter extends BaseAdapter {
         }
         Product product = data.get(i);
         Picasso.get().load(product.getHinhAnh()).into(viewHolder.imgAnhSP);
-        viewHolder.tvTenSP.setText("Tên Sản Phẩm: "+product.getTenSanPham());
-        viewHolder.tvGiaSP.setText("Giá Sản Phẩm: "+en.format(product.getGiaTien()) + " VNĐ");
+        viewHolder.tvTenSP.setText("Tên : "+product.getTenSanPham());
+        viewHolder.tvGiaSP.setText("Giá : "+en.format(product.getGiaTien()) + " VNĐ");
 
         return view;
     }
