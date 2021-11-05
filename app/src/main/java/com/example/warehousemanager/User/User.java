@@ -1,6 +1,8 @@
 package com.example.warehousemanager.User;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
     private String id, name, phone, rank,address, imgUser,nameIMGUser,email;
     private double totalMoney;
 
@@ -51,12 +53,12 @@ public class User {
         this.rank = rank;
     }
 
-    public String getDiaChi() {
+    public String getAddress() {
         return address;
     }
 
-    public void setDiaChi(String diaChi) {
-        this.address = diaChi;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getImgUser() {

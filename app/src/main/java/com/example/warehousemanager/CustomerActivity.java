@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,7 +30,9 @@ public class CustomerActivity extends AppCompatActivity {
     private UserAdapter userAdapter;
     private ListView lvListUser;
     private DatabaseReference databaseReference;
-    private Button btnBack,btnThemTaiKhoan;
+    private Button btnBack,btnThemTaiKhoan,btnTim;
+    private ArrayList<String> mkey = new ArrayList<>();
+    private EditText edtTim;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,15 +54,21 @@ public class CustomerActivity extends AppCompatActivity {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 userArrayList.add(dataSnapshot.getValue(User.class));
                 userAdapter.notifyDataSetChanged();
+                mkey.add(dataSnapshot.getKey());
             }
 
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                int index = mkey.indexOf(dataSnapshot.getKey());
+                userArrayList.set(index,dataSnapshot.getValue(User.class));
+                userAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
+                userArrayList.remove(dataSnapshot.getValue(User.class));
+                userAdapter.notifyDataSetChanged();
+                mkey.remove(dataSnapshot.getKey());
             }
 
             @Override
@@ -86,10 +96,61 @@ public class CustomerActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnTim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(edtTim.getText().toString().equals(""))
+                {
+                    Toast.makeText(context, "Vui Lòng Nhập Dữ Liệu Trước Khi Tìm Kiếm", Toast.LENGTH_SHORT).show();
+                }else
+                {
+                    userArrayList.clear();
+                    userAdapter.notifyDataSetChanged();
+                    databaseReference.child("user").addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            if(dataSnapshot.getValue(User.class).getName().contains(edtTim.getText().toString()))
+                            {
+                                userArrayList.add(dataSnapshot.getValue(User.class));
+                                userAdapter.notifyDataSetChanged();
+                                mkey.add(dataSnapshot.getKey());
+                            }
+                        }
+
+                        @Override
+                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            int index = mkey.indexOf(dataSnapshot.getKey());
+                            userArrayList.set(index,dataSnapshot.getValue(User.class));
+                            userAdapter.notifyDataSetChanged();
+                        }
+
+                        @Override
+                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+                            userArrayList.remove(dataSnapshot.getValue(User.class));
+                            userAdapter.notifyDataSetChanged();
+                            mkey.remove(dataSnapshot.getKey());
+                        }
+
+                        @Override
+                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+            }
+        });
     }
     private void setControll() {
         lvListUser = findViewById(R.id.lvListUser);
         btnBack = findViewById(R.id.backLayoutCustomer);
         btnThemTaiKhoan = findViewById(R.id.btnThemTaiKhoan);
+        edtTim = findViewById(R.id.edtTimUser);
+        btnTim = findViewById(R.id.btnTimUser);
     }
 }
