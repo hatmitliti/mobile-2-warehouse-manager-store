@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManufacturerProduct"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/backProductManufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quản Lí Hãng Đồ Uống"
+            android:textSize="30dp"
+            android:layout_gravity="center"
+            android:textStyle="bold"/>
+    </LinearLayout>
+
+
+    <EditText
+        android:id="@+id/edtTenHangProductManufacturer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnThemProductManufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="Thêm" />
+
+        <Button
+            android:id="@+id/btnXoaProductManufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:text="Xóa" />
+
+        <Button
+            android:id="@+id/btnSuaProductManufacturer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sửa" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/lvProductManufacturer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

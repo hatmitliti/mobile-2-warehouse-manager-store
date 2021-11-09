@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.warehousemanager">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +12,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehousemanager">
         <activity
+            android:name=".UpdateCustomerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".create_account_customer"
+            android:exported="true"></activity>
+        <activity
+            android:name=".ManufacturerProduct"
+            android:exported="true" />
+        <activity
+            android:name=".ProductCategory"
+            android:exported="true" />
+        <activity
             android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,14 +35,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".ExportActivity"></activity>
-        <activity android:name=".ImportGoodsActivity"></activity>
-        <activity android:name=".ProductActivity"></activity>
-        <activity android:name=".CustomerActivity"></activity>
-
-
+        <activity android:name=".ExportActivity" />
+        <activity android:name=".ImportGoodsActivity" />
+        <activity
+            android:name=".ProductActivity"
+            android:exported="true" />
+        <activity android:name=".CustomerActivity" />
     </application>
 
 </manifest>
