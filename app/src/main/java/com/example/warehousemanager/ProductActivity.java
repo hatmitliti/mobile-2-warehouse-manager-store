@@ -11,5 +11,7 @@ public class ProductActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_product);
 
+
+
     }
 }
