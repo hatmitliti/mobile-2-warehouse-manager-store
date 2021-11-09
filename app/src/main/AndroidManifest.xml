@@ -13,10 +13,13 @@
         android:theme="@style/Theme.Warehousemanager">
         <activity
             android:name=".UpdateCustomerActivity"
-            android:exported="false" />
+            android:exported="true" />
+        <activity
+            android:name=".StatisticsActivity"
+            android:exported="true" />
         <activity
             android:name=".create_account_customer"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ManufacturerProduct"
             android:exported="true" />

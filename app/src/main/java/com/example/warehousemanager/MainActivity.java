@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.warehousemanager.Category.Category;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView imgXuatHang,imgNhapHang, imgThongKe,imgKhachHang, imgSanPham,imgLoaiSanPham, imgHangSanXuat;
+    ImageView imgBill,imgNhapHang, imgThongKe,imgKhachHang, imgSanPham,imgLoaiSanPham, imgHangSanXuat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
         setEvent();
     }
     private void setEvent() {
-        imgXuatHang.setOnClickListener(new View.OnClickListener() {
+        imgBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,ExportActivity.class);
+                Intent intent = new Intent(MainActivity.this,BillActivity.class);
                 startActivity(intent);
             }
         }); imgNhapHang.setOnClickListener(new View.OnClickListener() {
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
     private void setControll() {
-        imgXuatHang = findViewById(R.id.imgExport);
+        imgBill = findViewById(R.id.imgBill);
         imgNhapHang = findViewById(R.id.imgImport);
         imgThongKe = findViewById(R.id.imgStatistics);
         imgKhachHang = findViewById(R.id.imgCustomer);
