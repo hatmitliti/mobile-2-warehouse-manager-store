@@ -22,6 +22,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.warehousemanager.Category.Category;
 import com.example.warehousemanager.Product.Product;
@@ -57,13 +58,25 @@ public class ProductActivity extends AppCompatActivity {
     private Product productSelected;
     private EditText edtTenSP, edtGiaSP;
     private ImageView imgAnhSP;
-    private Button btnThem, btnSua,btnXoa,btnBack;
+    private Button btnThem, btnSua, btnXoa, btnBack;
     private int RESULT_LOAD_IMAGE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_product);
+        // toolbarr
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
         setControll();
         SetEvent();
     }
@@ -165,6 +178,13 @@ public class ProductActivity extends AppCompatActivity {
         //
         productAdapter = new ProductAdapter(context, R.layout.items_product, productArrayList);
         lvProduct.setAdapter(productAdapter);
+
+
+        btnSua.setEnabled(false);
+        btnXoa.setEnabled(false);
+        btnThem.setEnabled(true);
+
+
         databaseReference.child("products").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -201,6 +221,9 @@ public class ProductActivity extends AppCompatActivity {
         lvProduct.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                btnSua.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnThem.setEnabled(false);
                 productSelected = productArrayList.get(i);
                 edtGiaSP.setText(productSelected.getGiaTien() + "");
                 edtTenSP.setText(productSelected.getTenSanPham());
@@ -234,11 +257,9 @@ public class ProductActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (edtTenSP.getText().toString().equals("") || edtGiaSP.getText().equals("")) {
                     Toast.makeText(context, "Vui Lòng Nhập Đầy Đủ Dữ Liệu", Toast.LENGTH_SHORT).show();
-                } else if(!checkLoop(edtTenSP.getText().toString()))
-                {
+                } else if (!checkLoop(edtTenSP.getText().toString())) {
                     Toast.makeText(context, "Tên Sản Phẩm Đã Tồn Tại", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     Calendar calendar = Calendar.getInstance();
                     String imageName = "image" + calendar.getTimeInMillis() + ".png";
                     // Create a reference to "mountains.jpg"
@@ -337,7 +358,7 @@ public class ProductActivity extends AppCompatActivity {
                                             StorageReference desertRef = storageRef.child(productSelected.getTenHinhAnh());
                                             desertRef.delete();
                                             HashMap hashMap = new HashMap();
-                                            hashMap.put(idProduct,product);
+                                            hashMap.put(idProduct, product);
 
                                             databaseReference.child("products").updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
                                                 @Override
@@ -351,6 +372,9 @@ public class ProductActivity extends AppCompatActivity {
                                                 }
                                             });
                                             setTextEmpty();
+                                            btnSua.setEnabled(false);
+                                            btnXoa.setEnabled(false);
+                                            btnThem.setEnabled(true);
                                         }
                                     });
                                 }
@@ -379,31 +403,27 @@ public class ProductActivity extends AppCompatActivity {
                                 //
                                 setTextEmpty();
                                 productSelected = null;
+                                btnSua.setEnabled(false);
+                                btnXoa.setEnabled(false);
+                                btnThem.setEnabled(true);
                             }
                         }).setNegativeButton("Không", null).show();
             }
         });
 
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProductActivity.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
-    private boolean checkLoop(String nameProduct){
-        for (Product a:productArrayList
-             ) {
-            if(a.getTenSanPham().toString().equals(nameProduct))
-            {
+    private boolean checkLoop(String nameProduct) {
+        for (Product a : productArrayList
+        ) {
+            if (a.getTenSanPham().toString().equals(nameProduct)) {
                 return false;
             }
         }
         return true;
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == RESULT_LOAD_IMAGE && data != null) {
@@ -429,6 +449,5 @@ public class ProductActivity extends AppCompatActivity {
         btnThem = findViewById(R.id.btnThemSPLayoutProduct);
         btnSua = findViewById(R.id.btnSuaSPLayoutProduct);
         btnXoa = findViewById(R.id.btnXoaSPLayoutProduct);
-        btnBack = findViewById(R.id.backLayoutProduct);
     }
 }

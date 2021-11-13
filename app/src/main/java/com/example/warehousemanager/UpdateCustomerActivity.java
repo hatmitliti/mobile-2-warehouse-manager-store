@@ -3,6 +3,7 @@ package com.example.warehousemanager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -35,7 +36,7 @@ import java.util.HashMap;
 public class UpdateCustomerActivity extends AppCompatActivity {
 
     private Context context;
-    private Button btnCapNhatThongTin, btnBack;
+    private Button btnCapNhatThongTin;
     private EditText edtEmail,edtTen,edtPhone,edtAddress;
     private de.hdodenhof.circleimageview.CircleImageView imgUser;
     private int RESULT_LOAD_IMAGE = 1;
@@ -43,6 +44,22 @@ public class UpdateCustomerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_update_customer);
+
+
+        // toolbarr
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+
 
         setControll();
         setEvent();
@@ -70,14 +87,6 @@ public class UpdateCustomerActivity extends AppCompatActivity {
         Picasso.get().load(user.getImgUser()).into(imgUser);
         //
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(context,CustomerActivity.class);
-                startActivity(intent1);
-            }
-        });
-        //
 
         imgUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +157,7 @@ public class UpdateCustomerActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onSuccess(Object o) {
                                                     Toast.makeText(context, "Sửa Thông Tin Người Dùng Thành Công", Toast.LENGTH_SHORT).show();
+                                                onBackPressed();
                                                 }
                                             }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
@@ -176,7 +186,6 @@ public class UpdateCustomerActivity extends AppCompatActivity {
     }
     private void setControll() {
         btnCapNhatThongTin = findViewById(R.id.btnCapNhatNguoiDung);
-        btnBack = findViewById(R.id.backLayoutUpdateUser);
         edtEmail = findViewById(R.id.edtEmailLayoutUpdateUser);
         edtTen = findViewById(R.id.edtNameUserLayoutUpdateUser);
         edtPhone = findViewById(R.id.edtPhoneUserLayoutUpdateUser);

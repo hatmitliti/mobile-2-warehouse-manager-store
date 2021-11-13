@@ -2,6 +2,7 @@ package com.example.warehousemanager;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.warehousemanager.Adapter.AdapterImportProduct;
 import com.example.warehousemanager.Product.Product;
@@ -35,12 +37,26 @@ public class ImportGoodsActivity extends AppCompatActivity {
     Button btnThemNhapHang;
     Button btnNhapHang;
     ListView lvNhapHang;
-    EditText TenCongTyNhapHang;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_import_goods);
+
+
+        // toolbarr
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
         setControl();
         getDataProduct();
 
@@ -74,17 +90,28 @@ public class ImportGoodsActivity extends AppCompatActivity {
             }
         });
 
+        // bấm vào lâu sẽ xóa sp đó ra:
+        lvNhapHang.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                listProductQualityImport.remove(i);
+                listProductIDImport.remove(i);
+                listProductStringImport.remove(i);
+                adapterImportProduct.notifyDataSetChanged();
+                return true;
+            }
+        });
+
+
+
         btnNhapHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (listProductStringImport.size() == 0) {
                     Toast.makeText(getApplicationContext(), "Chưa điền", Toast.LENGTH_SHORT).show();
                 } else {
-                    if (TenCongTyNhapHang.getText().toString().equals("")) {
-                        Toast.makeText(getApplicationContext(), "Chưa nhập tên cty", Toast.LENGTH_SHORT).show();
-                    } else {
+                    if (listProductFull.size() != 0) {
                         // nhập hàng
-
                         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("products");
                         for (int j = 0; j < listProductIDImport.size(); j++) {
                             int quality = getQuality(listProductIDImport.get(j));
@@ -105,7 +132,6 @@ public class ImportGoodsActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     public int getQuality(String id) {
@@ -122,7 +148,6 @@ public class ImportGoodsActivity extends AppCompatActivity {
         edtSoLuongNhapHang = findViewById(R.id.edtSoLuongNhapHang);
         btnThemNhapHang = findViewById(R.id.btnThemNhapHang);
         lvNhapHang = findViewById(R.id.lvNhapHang);
-        TenCongTyNhapHang = findViewById(R.id.TenCongTyNhapHang);
         btnNhapHang = findViewById(R.id.btnNhapHang);
     }
 

@@ -3,6 +3,7 @@ package com.example.warehousemanager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -27,7 +28,7 @@ import java.util.ArrayList;
 public class ProductCategory extends AppCompatActivity {
     private EditText edtTenLoai;
     private ListView lvDanhSachLoai;
-    private Button btnThem,btnXoa,btnSua,btnBack;
+    private Button btnThem,btnXoa,btnSua;
     private Context context;
     private ArrayList<Category> categories;
     private CategoryAdapter categoryAdapter;
@@ -39,6 +40,22 @@ public class ProductCategory extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_product_category);
+
+
+        // toolbarr
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+
 
         setControll();
         setEvent();
@@ -151,13 +168,7 @@ public class ProductCategory extends AppCompatActivity {
                 }
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ProductCategory.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
     private Boolean checkLoopData(String data)
     {
@@ -176,6 +187,5 @@ public class ProductCategory extends AppCompatActivity {
         btnThem = findViewById(R.id.btnThemCategoryProduct);
         btnXoa = findViewById(R.id.btnXoaCategoryProduct);
         btnSua = findViewById(R.id.btnSuaCategoryProduct);
-        btnBack = findViewById(R.id.backProductCategory);
     }
 }

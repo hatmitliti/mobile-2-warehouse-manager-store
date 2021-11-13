@@ -47,4 +47,9 @@ public class AdapterBill extends ArrayAdapter {
 
         return convertView;
     }
+
+    @Override
+    public int getCount() {
+        return data.size();
+    }
 }

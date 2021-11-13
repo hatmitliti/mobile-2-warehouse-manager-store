@@ -3,6 +3,7 @@ package com.example.warehousemanager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -40,7 +41,7 @@ public class create_account_customer extends AppCompatActivity {
 
     private de.hdodenhof.circleimageview.CircleImageView imgUser;
     private EditText edtEmail,edtPassword,edtRePassword,edtNameUser,edtPhone,edtAddress;
-    private Button btnTaoTaiKhoan,btnBack;
+    private Button btnTaoTaiKhoan;
     FirebaseAuth firebaseAuth;
     private int RESULT_LOAD_IMAGE = 1;
     private Context context;
@@ -49,6 +50,23 @@ public class create_account_customer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_create_account_customer);
+
+        // toolbarr
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+
+
+
         setControll();
         setEvent();
     }
@@ -96,14 +114,6 @@ public class create_account_customer extends AppCompatActivity {
                 else{
                     DangKy();
                 }
-            }
-        });
-
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(create_account_customer.this,CustomerActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -210,7 +220,6 @@ public class create_account_customer extends AppCompatActivity {
         edtPhone = findViewById(R.id.edtPhoneUserLayoutCreateUser);
         edtAddress = findViewById(R.id.edtAddressUserLayoutCreateUser);
         btnTaoTaiKhoan = findViewById(R.id.btnTaoTaiKhoanNguoiDung);
-        btnBack = findViewById(R.id.backLayoutCreateUser);
         imgUser = findViewById(R.id.imgCreateUser);
     }
 

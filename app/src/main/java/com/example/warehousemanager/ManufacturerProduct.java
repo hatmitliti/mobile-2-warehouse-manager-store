@@ -3,6 +3,7 @@ package com.example.warehousemanager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -29,7 +30,7 @@ import java.util.ArrayList;
 public class ManufacturerProduct extends AppCompatActivity {
     private EditText edtTenHang;
     private ListView lvDanhSachHang;
-    private Button btnThem,btnXoa,btnSua,btnBack;
+    private Button btnThem,btnXoa,btnSua;
     private Context context;
     private ArrayList<Manufacturer> manufacturerProductArrayList;
     private ManufacturerAdapter manufacturerAdapter;
@@ -40,6 +41,22 @@ public class ManufacturerProduct extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_product_manufacturer);
+
+
+        // toolbarr
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+
         setControll();
         setEvent();
     }
@@ -151,13 +168,7 @@ public class ManufacturerProduct extends AppCompatActivity {
                 }
             }
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ManufacturerProduct.this,MainActivity.class);
-                startActivity(intent);
-            }
-        });
+
     }
     private Boolean checkLoopData(String data)
     {
@@ -176,6 +187,6 @@ public class ManufacturerProduct extends AppCompatActivity {
         btnThem = findViewById(R.id.btnThemProductManufacturer);
         btnXoa = findViewById(R.id.btnXoaProductManufacturer);
         btnSua = findViewById(R.id.btnSuaProductManufacturer);
-        btnBack = findViewById(R.id.backProductManufacturer);
+
     }
 }
