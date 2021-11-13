@@ -2,7 +2,11 @@ package com.example.warehousemanager;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +29,9 @@ public class BillActivityDaSoan extends AppCompatActivity {
     AdapterBill adapterBill;
     ListView lvBill;
     ArrayList<Bill> list;
+    TextView txtStatus;
+    Button btnPhucHoi;
+    String billPhucHoi = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,7 @@ public class BillActivityDaSoan extends AppCompatActivity {
         setContentView(R.layout.layout_bill_da_soan);
         lvBill = findViewById(R.id.lvBill);
         list = new ArrayList<>();
+
         adapterBill = new AdapterBill(getApplicationContext(), R.layout.item_listview_don_hang_cho, list);
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -48,10 +56,18 @@ public class BillActivityDaSoan extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Bill bill = dataSnapshot.getValue(Bill.class);
-                if (bill.getStatus() != 1) {
-                    list.remove(bill);
-                    adapterBill.notifyDataSetChanged();
+                if (bill.getStatus() == 1) {
+                    list.add(bill);
+                } else {
+                    for (int i = 0; i < list.size(); i++) {
+                        if (list.get(i).getId().equals(bill.getId()))
+                            if (list.get(i).getId().equals(bill.getId())) {
+                                list.remove(bill);
+                                billPhucHoi = list.get(i).getId();
+                            }
+                    }
                 }
+                adapterBill.notifyDataSetChanged();
             }
 
             @Override
@@ -69,7 +85,7 @@ public class BillActivityDaSoan extends AppCompatActivity {
 
             }
         });
-
+        lvBill.setAdapter(adapterBill);
         // toolbarr
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -82,5 +98,40 @@ public class BillActivityDaSoan extends AppCompatActivity {
             }
         });
 
+
+        txtStatus = findViewById(R.id.txtStatus);
+        btnPhucHoi = findViewById(R.id.btnPhucHoi);
+
+        btnPhucHoi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseDatabase.getInstance().getReference("bills").child(billPhucHoi).child("status").setValue(1);
+                Toast.makeText(getApplicationContext(), "Phục hồi thành công", Toast.LENGTH_SHORT).show();
+                billPhucHoi = "";
+                gavityPhucHoi();
+            }
+        });
+
+
+        lvBill.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                billPhucHoi = list.get(i).getId();
+                FirebaseDatabase.getInstance().getReference("bills").child(list.get(i).getId()).child("status").setValue(2);
+                gavityPhucHoi();
+                list.remove(i);
+                return true;
+            }
+        });
+        gavityPhucHoi();
+
+    }
+
+    public void gavityPhucHoi() {
+        if (billPhucHoi.equals("")) {
+            btnPhucHoi.setVisibility(View.GONE);
+        } else {
+            btnPhucHoi.setVisibility(View.VISIBLE);
+        }
     }
 }

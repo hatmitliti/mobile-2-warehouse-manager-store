@@ -30,13 +30,14 @@ import java.util.ArrayList;
 public class ManufacturerProduct extends AppCompatActivity {
     private EditText edtTenHang;
     private ListView lvDanhSachHang;
-    private Button btnThem,btnXoa,btnSua;
+    private Button btnThem, btnXoa, btnSua;
     private Context context;
     private ArrayList<Manufacturer> manufacturerProductArrayList;
     private ManufacturerAdapter manufacturerAdapter;
     ArrayList<String> mKey = new ArrayList<>();
     DatabaseReference Datamanufacturer;
     Manufacturer manufacturerSelected;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,10 +57,15 @@ public class ManufacturerProduct extends AppCompatActivity {
         });
 
 
-
         setControll();
         setEvent();
+
+
+        btnSua.setEnabled(false);
+        btnXoa.setEnabled(false);
+        btnThem.setEnabled(true);
     }
+
     private void setEvent() {
         //
         Datamanufacturer = FirebaseDatabase.getInstance().getReference();
@@ -67,7 +73,7 @@ public class ManufacturerProduct extends AppCompatActivity {
         context = this;
         //
         manufacturerProductArrayList = new ArrayList<>();
-        manufacturerAdapter = new ManufacturerAdapter(context,R.layout.items_product_manufacturer, manufacturerProductArrayList);
+        manufacturerAdapter = new ManufacturerAdapter(context, R.layout.items_product_manufacturer, manufacturerProductArrayList);
         lvDanhSachHang.setAdapter(manufacturerAdapter);
         //
         Datamanufacturer.child("manufacturer").addChildEventListener(new ChildEventListener() {
@@ -78,10 +84,11 @@ public class ManufacturerProduct extends AppCompatActivity {
                 manufacturerAdapter.notifyDataSetChanged();
                 mKey.add(dataSnapshot.getKey());
             }
+
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 int index = mKey.indexOf(dataSnapshot.getKey());
-                manufacturerProductArrayList.set(index,dataSnapshot.getValue(Manufacturer.class));
+                manufacturerProductArrayList.set(index, dataSnapshot.getValue(Manufacturer.class));
                 manufacturerAdapter.notifyDataSetChanged();
             }
 
@@ -107,25 +114,24 @@ public class ManufacturerProduct extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 manufacturerSelected = manufacturerProductArrayList.get(i);
                 edtTenHang.setText(manufacturerProductArrayList.get(i).getName());
+                btnSua.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnThem.setEnabled(false);
             }
         });
 
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtTenHang.getText().toString().equals(""))
-                {
+                if (edtTenHang.getText().toString().equals("")) {
                     Toast.makeText(context, "Vui Lòng Nhập Dữ Liệu Đầy Đủ", Toast.LENGTH_SHORT).show();
-                }else
-                {
-                    if(checkLoopData(edtTenHang.getText().toString()))
-                    {
-                        String idManufacturer = (manufacturerProductArrayList.size()+1) + "";
+                } else {
+                    if (checkLoopData(edtTenHang.getText().toString())) {
+                        String idManufacturer = (manufacturerProductArrayList.size() + 1) + "";
                         String name = edtTenHang.getText().toString();
-                        Manufacturer manufacturer = new Manufacturer(idManufacturer,name);
+                        Manufacturer manufacturer = new Manufacturer(idManufacturer, name);
                         Datamanufacturer.child("manufacturer").child(idManufacturer).setValue(manufacturer);
-                    }else
-                    {
+                    } else {
                         Toast.makeText(context, "Tên Loại Đồ Uống Đã Tồn Tại", Toast.LENGTH_SHORT).show();
                     }
 
@@ -135,33 +141,35 @@ public class ManufacturerProduct extends AppCompatActivity {
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(manufacturerSelected== null)
-                {
+                if (manufacturerSelected == null) {
                     Toast.makeText(context, "Vui Lòng Chọn Đối Tượng Trước Khi Xóa", Toast.LENGTH_SHORT).show();
-                }else
-                {
+                } else {
                     edtTenHang.setText("");
                     Datamanufacturer.child("manufacturer").child(manufacturerSelected.getId()).setValue(null);
                     manufacturerProductArrayList.remove(manufacturerSelected);
                     mKey.remove(manufacturerSelected.getId());
                     manufacturerAdapter.notifyDataSetChanged();
+                    btnSua.setEnabled(false);
+                    btnXoa.setEnabled(false);
+                    btnThem.setEnabled(true);
+
                 }
             }
         });
         btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtTenHang.getText().toString().equals(""))
-                {
+                if (edtTenHang.getText().toString().equals("")) {
                     Toast.makeText(context, "Vui Lòng Nhập Dữ Liệu Đầy Đủ", Toast.LENGTH_SHORT).show();
-                }else
-                {
-                    if(checkLoopData(edtTenHang.getText().toString()))
-                    {
+                } else {
+                    if (checkLoopData(edtTenHang.getText().toString())) {
                         String name = edtTenHang.getText().toString();
                         Datamanufacturer.child("manufacturer").child(manufacturerSelected.getId()).child("name").setValue(name);
-                    }else
-                    {
+                        Toast.makeText(getApplicationContext(), "Sửa thành công", Toast.LENGTH_SHORT).show();
+                        btnSua.setEnabled(false);
+                        btnXoa.setEnabled(false);
+                        btnThem.setEnabled(true);
+                    } else {
                         Toast.makeText(context, "Tên Loại Đồ Uống Đã Tồn Tại", Toast.LENGTH_SHORT).show();
                     }
 
@@ -170,18 +178,18 @@ public class ManufacturerProduct extends AppCompatActivity {
         });
 
     }
-    private Boolean checkLoopData(String data)
-    {
-        for (Manufacturer a:manufacturerProductArrayList
+
+    private Boolean checkLoopData(String data) {
+        for (Manufacturer a : manufacturerProductArrayList
         ) {
-            if(a.getName().toString().equals(data))
-            {
+            if (a.getName().toString().equals(data)) {
                 return false;
             }
         }
         return true;
     }
-    private void  setControll() {
+
+    private void setControll() {
         edtTenHang = findViewById(R.id.edtTenHangProductManufacturer);
         lvDanhSachHang = findViewById(R.id.lvProductManufacturer);
         btnThem = findViewById(R.id.btnThemProductManufacturer);

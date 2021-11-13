@@ -23,8 +23,17 @@
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2953703703703704" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/activity_detail_bill.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/activity_thong_ke.xml" value="0.2604166666666667" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/first_load.xml" value="0.2509057971014493" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/item_listview_don_hang_cho.xml" value="0.264" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/item_product_bill.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/item_thong_ke_product.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_customer.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_export.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_import_goods.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_product.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_product_category.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_product_manufacturer.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_statistics.xml" value="0.2509057971014493" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_activity.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_cho.xml" value="0.26313405797101447" />
@@ -34,11 +43,14 @@
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_create_account_customer.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_customer.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_import_goods.xml" value="0.26313405797101447" />
-        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_main.xml" value="0.16302083333333334" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_login.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_main.xml" value="0.264" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product_category.xml" value="0.26313405797101447" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product_manufacturer.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_statistics.xml" value="0.2509057971014493" />
         <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_update_customer.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/thu_kho_xuat_hang_item.xml" value="0.2509057971014493" />
       </map>
     </option>
   </component>

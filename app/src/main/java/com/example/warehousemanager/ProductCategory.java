@@ -28,7 +28,7 @@ import java.util.ArrayList;
 public class ProductCategory extends AppCompatActivity {
     private EditText edtTenLoai;
     private ListView lvDanhSachLoai;
-    private Button btnThem,btnXoa,btnSua;
+    private Button btnThem, btnXoa, btnSua;
     private Context context;
     private ArrayList<Category> categories;
     private CategoryAdapter categoryAdapter;
@@ -55,10 +55,11 @@ public class ProductCategory extends AppCompatActivity {
         });
 
 
-
-
         setControll();
         setEvent();
+        btnSua.setEnabled(false);
+        btnXoa.setEnabled(false);
+        btnThem.setEnabled(true);
     }
 
     private void setEvent() {
@@ -68,7 +69,7 @@ public class ProductCategory extends AppCompatActivity {
         context = this;
         //
         categories = new ArrayList<>();
-        categoryAdapter = new CategoryAdapter(context,R.layout.items_product_category,categories);
+        categoryAdapter = new CategoryAdapter(context, R.layout.items_product_category, categories);
         lvDanhSachLoai.setAdapter(categoryAdapter);
         //
         DataCategory.child("categorys").addChildEventListener(new ChildEventListener() {
@@ -79,10 +80,11 @@ public class ProductCategory extends AppCompatActivity {
                 categoryAdapter.notifyDataSetChanged();
                 mKey.add(dataSnapshot.getKey());
             }
+
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 int index = mKey.indexOf(dataSnapshot.getKey());
-                categories.set(index,dataSnapshot.getValue(Category.class));
+                categories.set(index, dataSnapshot.getValue(Category.class));
                 categoryAdapter.notifyDataSetChanged();
             }
 
@@ -108,25 +110,28 @@ public class ProductCategory extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 categorySelected = categories.get(i);
                 edtTenLoai.setText(categories.get(i).getName());
+                btnSua.setEnabled(true);
+                btnXoa.setEnabled(true);
+                btnThem.setEnabled(false);
             }
         });
 
         btnThem.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtTenLoai.getText().toString().equals(""))
-                {
+                if (edtTenLoai.getText().toString().equals("")) {
                     Toast.makeText(context, "Vui Lòng Nhập Dữ Liệu Đầy Đủ", Toast.LENGTH_SHORT).show();
-                }else
-                {
-                    if(checkLoopData(edtTenLoai.getText().toString()))
-                    {
-                        String idCategory = (categories.size()+1) + "";
+                } else {
+                    if (checkLoopData(edtTenLoai.getText().toString())) {
+                        String idCategory = (categories.size() + 1) + "";
                         String name = edtTenLoai.getText().toString();
-                        Category category = new Category(idCategory,name);
+                        Category category = new Category(idCategory, name);
                         DataCategory.child("categorys").child(idCategory).setValue(category);
-                    }else
-                    {
+                        Toast.makeText(getApplicationContext(), "Thêm thành công", Toast.LENGTH_SHORT).show();
+                        btnSua.setEnabled(false);
+                        btnXoa.setEnabled(false);
+                        btnThem.setEnabled(true);
+                    } else {
                         Toast.makeText(context, "Tên Loại Đồ Uống Đã Tồn Tại", Toast.LENGTH_SHORT).show();
                     }
 
@@ -136,14 +141,16 @@ public class ProductCategory extends AppCompatActivity {
         btnXoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(categorySelected == null)
-                {
+                if (categorySelected == null) {
                     Toast.makeText(context, "Vui Lòng Chọn Đối Tượng Trước Khi Xóa", Toast.LENGTH_SHORT).show();
-                }else
-                {
+                } else {
                     edtTenLoai.setText("");
                     DataCategory.child("categorys").child(categorySelected.getId()).setValue(null);
                     categories.remove(categorySelected);
+                    Toast.makeText(getApplicationContext(), "Xóa thành công", Toast.LENGTH_SHORT).show();
+                    btnSua.setEnabled(false);
+                    btnXoa.setEnabled(false);
+                    btnThem.setEnabled(true);
                     categoryAdapter.notifyDataSetChanged();
                 }
             }
@@ -151,17 +158,13 @@ public class ProductCategory extends AppCompatActivity {
         btnSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(edtTenLoai.getText().toString().equals(""))
-                {
+                if (edtTenLoai.getText().toString().equals("")) {
                     Toast.makeText(context, "Vui Lòng Nhập Dữ Liệu Đầy Đủ", Toast.LENGTH_SHORT).show();
-                }else
-                {
-                    if(checkLoopData(edtTenLoai.getText().toString()))
-                    {
+                } else {
+                    if (checkLoopData(edtTenLoai.getText().toString())) {
                         String name = edtTenLoai.getText().toString();
                         DataCategory.child("categorys").child(categorySelected.getId()).child("name").setValue(name);
-                    }else
-                    {
+                    } else {
                         Toast.makeText(context, "Tên Loại Đồ Uống Đã Tồn Tại", Toast.LENGTH_SHORT).show();
                     }
 
@@ -170,18 +173,18 @@ public class ProductCategory extends AppCompatActivity {
         });
 
     }
-    private Boolean checkLoopData(String data)
-    {
-        for (Category a:categories
-             ) {
-            if(a.getName().toString().equals(data))
-            {
+
+    private Boolean checkLoopData(String data) {
+        for (Category a : categories
+        ) {
+            if (a.getName().toString().equals(data)) {
                 return false;
             }
         }
         return true;
     }
-    private void  setControll() {
+
+    private void setControll() {
         edtTenLoai = findViewById(R.id.edtTenHangProductCategory);
         lvDanhSachLoai = findViewById(R.id.lvCategoryProduct);
         btnThem = findViewById(R.id.btnThemCategoryProduct);

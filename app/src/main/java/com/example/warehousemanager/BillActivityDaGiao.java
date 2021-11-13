@@ -33,7 +33,7 @@ public class BillActivityDaGiao extends AppCompatActivity {
         lvBill = findViewById(R.id.lvBill);
         list = new ArrayList<>();
         adapterBill = new AdapterBill(getApplicationContext(), R.layout.item_listview_don_hang_cho, list);
-
+        lvBill.setAdapter(adapterBill);
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
         databaseReference.child("bills").addChildEventListener(new ChildEventListener() {
             @Override
@@ -48,10 +48,17 @@ public class BillActivityDaGiao extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Bill bill = dataSnapshot.getValue(Bill.class);
-                if (bill.getStatus() != 3) {
-                    list.remove(bill);
-                    adapterBill.notifyDataSetChanged();
+                if (bill.getStatus() == 3) {
+                    list.add(bill);
+                } else {
+                    for (int i = 0; i < list.size(); i++) {
+                        if (list.get(i).getId().equals(bill.getId()))
+                            if (list.get(i).getId().equals(bill.getId())) {
+                                list.remove(bill);
+                            }
+                    }
                 }
+                adapterBill.notifyDataSetChanged();
             }
 
             @Override

@@ -52,10 +52,17 @@ public class BillActivityCho extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Bill bill = dataSnapshot.getValue(Bill.class);
-                if (bill.getStatus() != 0) {
-                    list.remove(bill);
-                    adapterBill.notifyDataSetChanged();
+                if (bill.getStatus() == 0) {
+                    list.add(bill);
+                } else {
+                    for (int i = 0; i < list.size(); i++) {
+                        if (list.get(i).getId().equals(bill.getId()))
+                            if (list.get(i).getId().equals(bill.getId())) {
+                                list.remove(bill);
+                            }
+                    }
                 }
+                adapterBill.notifyDataSetChanged();
             }
 
             @Override
@@ -86,7 +93,6 @@ public class BillActivityCho extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
 
 
         // toolbarr
