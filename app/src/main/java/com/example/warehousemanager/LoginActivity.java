@@ -23,7 +23,7 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseUser currentUser;
 
-
+    /
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-    //
+
     private void checkLogin() {
         String email = edtEmail.getText().toString().trim();
         String password = edtPassword.getText().toString().trim();
