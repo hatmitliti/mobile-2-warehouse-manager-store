@@ -42,7 +42,7 @@ public class BillActivityDaGiao extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Bill bill = dataSnapshot.getValue(Bill.class);
-                if (bill.getStatus() == 3|| bill.getStatus() == 4) {
+                if (bill.getStatus() == 3 || bill.getStatus() == 4) {
                     list.add(dataSnapshot.getValue(Bill.class));
                     adapterBill.notifyDataSetChanged();
                 }
@@ -51,8 +51,13 @@ public class BillActivityDaGiao extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Bill bill = dataSnapshot.getValue(Bill.class);
-                if (bill.getStatus() == 3 || bill.getStatus() == 4) {
-                    list.add(bill);
+                for (int i = 0; i < list.size(); i++) {
+                    if (bill.getStatus() == 3 || bill.getStatus() == 4) {
+                        if (bill.getId().equals(list.get(i).getId())) {
+                            list.add(bill);
+                            list.remove(i);
+                        }
+                    }
                 }
                 adapterBill.notifyDataSetChanged();
             }
@@ -84,13 +89,13 @@ public class BillActivityDaGiao extends AppCompatActivity {
             }
         });
 
-        lvBill.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        lvBill.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 // tăng tiền mua cho người dùng:
-                if (list.get(i).getStatus() == 4){
+                if (list.get(i).getStatus() == 4) {
                     Toast.makeText(getApplicationContext(), "Bạn đã xác nhận đơn hàng này", Toast.LENGTH_SHORT).show();
-                }else {
+                } else {
                     FirebaseDatabase.getInstance().getReference("user").addChildEventListener(new ChildEventListener() {
                         @Override
                         public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
@@ -100,7 +105,23 @@ public class BillActivityDaGiao extends AppCompatActivity {
                                 int tong = tongTienBill + user.getTotalMoney();
                                 FirebaseDatabase.getInstance().getReference("user").child(user.getId()).child("totalMoney")
                                         .setValue(tong);
-                                FirebaseDatabase.getInstance().getReference("bills").child(list.get(i).getId()).child("status").setValue(4);
+                                FirebaseDatabase.getInstance().getReference("bills").child(list.get(i).getId())
+                                        .child("status").setValue(4);
+                                // thăng hạng cho người dùng:
+                                // 100tr: Vip
+                                // 50tr: Vàng
+                                // 20tr: Bạc
+                                String hang = "Đồng";
+                                if (tong>=100000000){
+                                    hang = "VIP";
+                                }else if (tong>=50000000){
+                                    hang = "Vàng";
+
+                                }else  if (tong>=20000000){
+                                    hang="Bạc";
+                                }
+                                FirebaseDatabase.getInstance().getReference("user").child(user.getId()).child("rank")
+                                        .setValue(hang);
                             }
                         }
 
@@ -124,8 +145,9 @@ public class BillActivityDaGiao extends AppCompatActivity {
 
                         }
                     });
+
+
                 }
-                return true;
             }
         });
 
