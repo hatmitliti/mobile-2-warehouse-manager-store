@@ -14,6 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.warehousemanager.Adapter.AdapterBill;
 import com.example.warehousemanager.Object.Bill;
+import com.example.warehousemanager.User.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -28,7 +29,6 @@ public class BillActivityDangGiao extends AppCompatActivity {
     AdapterBill adapterBill;
     ListView lvBill;
     ArrayList<Bill> list;
-    Button btnPhucHoi;
     String billPhucHoi = "";
 
     @Override
@@ -96,37 +96,18 @@ public class BillActivityDangGiao extends AppCompatActivity {
         });
 
 
-        btnPhucHoi = findViewById(R.id.btnPhucHoi);
-        btnPhucHoi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference("bills").child(billPhucHoi).child("status").setValue(2);
-                Toast.makeText(getApplicationContext(), "Phục hồi thành công", Toast.LENGTH_SHORT).show();
-                billPhucHoi = "";
-                gavityPhucHoi();
-            }
-        });
-
         lvBill.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
-                billPhucHoi = list.get(i).getId();
                 FirebaseDatabase.getInstance().getReference("bills").child(list.get(i).getId()).child("status").setValue(3);
-                gavityPhucHoi();
+
+
                 list.remove(i);
+
+
                 return true;
             }
         });
-        gavityPhucHoi();
-
-
     }
 
-    public void gavityPhucHoi() {
-        if (billPhucHoi.equals("")) {
-            btnPhucHoi.setVisibility(View.GONE);
-        } else {
-            btnPhucHoi.setVisibility(View.VISIBLE);
-        }
-    }
 }

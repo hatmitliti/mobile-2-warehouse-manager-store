@@ -37,9 +37,10 @@ public class UpdateCustomerActivity extends AppCompatActivity {
 
     private Context context;
     private Button btnCapNhatThongTin;
-    private EditText edtEmail,edtTen,edtPhone,edtAddress;
+    private EditText edtEmail, edtTen, edtPhone, edtAddress;
     private de.hdodenhof.circleimageview.CircleImageView imgUser;
     private int RESULT_LOAD_IMAGE = 1;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,11 +60,10 @@ public class UpdateCustomerActivity extends AppCompatActivity {
         });
 
 
-
-
         setControll();
         setEvent();
     }
+
     private void setEvent() {
         /*
          * Tạo các biến để lưu file ảnh trên firebase
@@ -114,7 +114,7 @@ public class UpdateCustomerActivity extends AppCompatActivity {
                     Calendar calendar = Calendar.getInstance();
                     String imageName = "image" + calendar.getTimeInMillis() + ".png";
                     // Create a reference to "mountains.jpg"
-                    StorageReference mountainsRef = storageRef.child("UserImage/"+imageName);
+                    StorageReference mountainsRef = storageRef.child("UserImage/" + imageName);
                     // Get the data from an ImageView as bytes
                     imgUser.setDrawingCacheEnabled(true);
                     imgUser.buildDrawingCache();
@@ -141,23 +141,23 @@ public class UpdateCustomerActivity extends AppCompatActivity {
                                     result.addOnSuccessListener(new OnSuccessListener<Uri>() {
                                         @Override
                                         public void onSuccess(Uri uri) {
-                                           String email = edtEmail.getText().toString();
-                                           String phone = edtPhone.getText().toString();
-                                           String address = edtAddress.getText().toString();
-                                           String name = edtTen.getText().toString();
+                                            String email = edtEmail.getText().toString();
+                                            String phone = edtPhone.getText().toString();
+                                            String address = edtAddress.getText().toString();
+                                            String name = edtTen.getText().toString();
                                             String imageURL = uri.toString();
                                             //createNewPost(imageUrl);
-                                            User user1 = new User(user.getId(),name,email,phone,user.getRank(),address,imageURL,imageName,user.getTotalMoney());
+                                            User user1 = new User(user.getId(), name, email, phone, user.getRank(), address, imageURL, imageName, user.getTotalMoney());
                                             StorageReference desertRef = storageRef.child("UserImage").child(user.getNameIMGUser());
                                             desertRef.delete();
                                             HashMap hashMap = new HashMap();
-                                            hashMap.put(user.getId(),user1);
+                                            hashMap.put(user.getId(), user1);
                                             user.setNameIMGUser(imageName);
                                             databaseReference.child("user").updateChildren(hashMap).addOnSuccessListener(new OnSuccessListener() {
                                                 @Override
                                                 public void onSuccess(Object o) {
                                                     Toast.makeText(context, "Sửa Thông Tin Người Dùng Thành Công", Toast.LENGTH_SHORT).show();
-                                                onBackPressed();
+                                                    onBackPressed();
                                                 }
                                             }).addOnFailureListener(new OnFailureListener() {
                                                 @Override
@@ -176,6 +176,7 @@ public class UpdateCustomerActivity extends AppCompatActivity {
         });
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if (requestCode == RESULT_LOAD_IMAGE && data != null) {
@@ -184,6 +185,7 @@ public class UpdateCustomerActivity extends AppCompatActivity {
         }
         super.onActivityResult(requestCode, resultCode, data);
     }
+
     private void setControll() {
         btnCapNhatThongTin = findViewById(R.id.btnCapNhatNguoiDung);
         edtEmail = findViewById(R.id.edtEmailLayoutUpdateUser);

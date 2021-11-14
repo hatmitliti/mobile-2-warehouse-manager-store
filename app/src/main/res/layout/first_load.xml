@@ -17,10 +17,11 @@
 
 
     <ImageView
+        android:padding="50dp"
         android:id="@+id/imageView"
         android:layout_width="280dp"
         android:layout_height="280dp"
-        android:src="@drawable/logo" />
+        android:src="@drawable/loginicon" />
 
     <TextView
         android:id="@+id/nhom6"

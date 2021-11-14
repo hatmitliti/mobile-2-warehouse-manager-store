@@ -2,7 +2,9 @@ package com.example.warehousemanager;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -11,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.warehousemanager.Adapter.AdapterBill;
 import com.example.warehousemanager.Object.Bill;
+import com.example.warehousemanager.User.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -39,7 +42,7 @@ public class BillActivityDaGiao extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Bill bill = dataSnapshot.getValue(Bill.class);
-                if (bill.getStatus() == 3) {
+                if (bill.getStatus() == 3|| bill.getStatus() == 4) {
                     list.add(dataSnapshot.getValue(Bill.class));
                     adapterBill.notifyDataSetChanged();
                 }
@@ -48,15 +51,8 @@ public class BillActivityDaGiao extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Bill bill = dataSnapshot.getValue(Bill.class);
-                if (bill.getStatus() == 3) {
+                if (bill.getStatus() == 3 || bill.getStatus() == 4) {
                     list.add(bill);
-                } else {
-                    for (int i = 0; i < list.size(); i++) {
-                        if (list.get(i).getId().equals(bill.getId()))
-                            if (list.get(i).getId().equals(bill.getId())) {
-                                list.remove(bill);
-                            }
-                    }
                 }
                 adapterBill.notifyDataSetChanged();
             }
@@ -88,6 +84,50 @@ public class BillActivityDaGiao extends AppCompatActivity {
             }
         });
 
+        lvBill.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                // tăng tiền mua cho người dùng:
+                if (list.get(i).getStatus() == 4){
+                    Toast.makeText(getApplicationContext(), "Bạn đã xác nhận đơn hàng này", Toast.LENGTH_SHORT).show();
+                }else {
+                    FirebaseDatabase.getInstance().getReference("user").addChildEventListener(new ChildEventListener() {
+                        @Override
+                        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                            User user = dataSnapshot.getValue(User.class);
+                            if (user.getId().equals(list.get(i).getId_user())) {
+                                int tongTienBill = list.get(i).getTotalMoney();
+                                int tong = tongTienBill + user.getTotalMoney();
+                                FirebaseDatabase.getInstance().getReference("user").child(user.getId()).child("totalMoney")
+                                        .setValue(tong);
+                                FirebaseDatabase.getInstance().getReference("bills").child(list.get(i).getId()).child("status").setValue(4);
+                            }
+                        }
+
+                        @Override
+                        public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        }
+
+                        @Override
+                        public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                        }
+
+                        @Override
+                        public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+                }
+                return true;
+            }
+        });
 
     }
 }

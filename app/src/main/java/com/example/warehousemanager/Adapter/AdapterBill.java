@@ -1,10 +1,12 @@
 package com.example.warehousemanager.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,6 +39,7 @@ public class AdapterBill extends ArrayAdapter {
         TextView txtTenNguoiNhanBillStatus = convertView.findViewById(R.id.txtTenNguoiNhanBillStatus);
         TextView txtMaDonHangBillStatus = convertView.findViewById(R.id.txtMaDonHangBillStatus);
         TextView txtTienTraBillStatus = convertView.findViewById(R.id.txtTienTraBillStatus);
+        LinearLayout linnear_itemBill = convertView.findViewById(R.id.linnear_itemBill);
 
 
         txtDiaChiBillStatus.setText("Địa chỉ: " + data.get(position).getAddress());
@@ -44,6 +47,9 @@ public class AdapterBill extends ArrayAdapter {
         txtMaDonHangBillStatus.setText("Mã: " + data.get(position).getId());
         txtTienTraBillStatus.setText("Tổng: " + data.get(position).getTotalMoney());
 
+        if (data.get(position).getStatus() == 4){
+            linnear_itemBill.setBackgroundColor(Color.GREEN);
+        }
 
         return convertView;
     }

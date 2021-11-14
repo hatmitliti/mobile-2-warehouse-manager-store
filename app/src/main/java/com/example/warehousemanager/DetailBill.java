@@ -159,6 +159,14 @@ public class DetailBill extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseDatabase.getInstance().getReference("bills").child(id).child("status").setValue(1);
+
+
+
+
+
+
+
+
                 onBackPressed();
             }
         });

@@ -45,7 +45,6 @@ public class BillActivityCho extends AppCompatActivity {
                 if (bill.getStatus() == 0) {
                     list.add(dataSnapshot.getValue(Bill.class));
                     adapterBill.notifyDataSetChanged();
-                    //   Toast.makeText(getApplicationContext(), "Alo", Toast.LENGTH_SHORT).show();
                 }
             }
 
