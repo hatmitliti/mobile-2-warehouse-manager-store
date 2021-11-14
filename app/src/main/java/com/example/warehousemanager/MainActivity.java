@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
-    ImageView imgBill, imgNhapHang, imgThongKe, imgKhachHang, imgSanPham, imgLoaiSanPham, imgHangSanXuat;
+    ImageView imgBill, imgNhapHang, imgThongKe, imgKhachHang, imgSanPham, imgLoaiSanPham, imgHangSanXuat, imageView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +68,13 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UserVip.class);
+                startActivity(intent);
+            }
+        });
     }
 
     private void setControll() {
@@ -78,5 +85,6 @@ public class MainActivity extends AppCompatActivity {
         imgLoaiSanPham = findViewById(R.id.imgCategory);
         imgHangSanXuat = findViewById(R.id.imgManufaturer);
         imgSanPham = findViewById(R.id.imgProduct);
+        imageView2 = findViewById(R.id.imageView2);
     }
 }

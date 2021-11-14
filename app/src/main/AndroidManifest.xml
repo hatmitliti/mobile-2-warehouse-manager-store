@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Warehousemanager">
         <activity
+            android:name=".UserVip"
+            android:exported="false" />
+        <activity
             android:name=".ThongKeActivity"
             android:exported="false" />
         <activity
@@ -68,8 +71,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
         <activity android:name=".ImportGoodsActivity" />
         <activity
             android:name=".ProductActivity"
