@@ -131,6 +131,10 @@ public class ManufacturerProduct extends AppCompatActivity {
                         String name = edtTenHang.getText().toString();
                         Manufacturer manufacturer = new Manufacturer(idManufacturer, name);
                         Datamanufacturer.child("manufacturer").child(idManufacturer).setValue(manufacturer);
+
+                        edtTenHang.setText("");
+                        Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
+
                     } else {
                         Toast.makeText(context, "Tên Loại Đồ Uống Đã Tồn Tại", Toast.LENGTH_SHORT).show();
                     }
@@ -152,7 +156,7 @@ public class ManufacturerProduct extends AppCompatActivity {
                     btnSua.setEnabled(false);
                     btnXoa.setEnabled(false);
                     btnThem.setEnabled(true);
-
+                    Toast.makeText(getApplicationContext(), "Thành công", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -169,6 +173,7 @@ public class ManufacturerProduct extends AppCompatActivity {
                         btnSua.setEnabled(false);
                         btnXoa.setEnabled(false);
                         btnThem.setEnabled(true);
+                        edtTenHang.setText("");
                     } else {
                         Toast.makeText(context, "Tên Loại Đồ Uống Đã Tồn Tại", Toast.LENGTH_SHORT).show();
                     }

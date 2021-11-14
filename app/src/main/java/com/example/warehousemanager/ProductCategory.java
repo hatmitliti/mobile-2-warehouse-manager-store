@@ -131,6 +131,8 @@ public class ProductCategory extends AppCompatActivity {
                         btnSua.setEnabled(false);
                         btnXoa.setEnabled(false);
                         btnThem.setEnabled(true);
+
+                        edtTenLoai.setText("");
                     } else {
                         Toast.makeText(context, "Tên Loại Đồ Uống Đã Tồn Tại", Toast.LENGTH_SHORT).show();
                     }
