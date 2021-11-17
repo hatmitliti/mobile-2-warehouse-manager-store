@@ -66,6 +66,7 @@
                             android:textStyle="bold" />
 
                         <EditText
+                            android:enabled="false"
                             android:id="@+id/edtEmailLayoutUpdateUser"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
