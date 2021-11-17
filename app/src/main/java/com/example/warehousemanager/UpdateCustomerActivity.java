@@ -114,7 +114,7 @@ public class UpdateCustomerActivity extends AppCompatActivity {
                     Calendar calendar = Calendar.getInstance();
                     String imageName = "image" + calendar.getTimeInMillis() + ".png";
                     // Create a reference to "mountains.jpg"
-                    StorageReference mountainsRef = storageRef.child("UserImage/" + imageName);
+                    StorageReference mountainsRef = storageRef.child("ImagesUsers/" + imageName);
                     // Get the data from an ImageView as bytes
                     imgUser.setDrawingCacheEnabled(true);
                     imgUser.buildDrawingCache();
@@ -148,7 +148,7 @@ public class UpdateCustomerActivity extends AppCompatActivity {
                                             String imageURL = uri.toString();
                                             //createNewPost(imageUrl);
                                             User user1 = new User(user.getId(), name, email, phone, user.getRank(), address, imageURL, imageName, user.getTotalMoney());
-                                            StorageReference desertRef = storageRef.child("UserImage").child(user.getNameIMGUser());
+                                            StorageReference desertRef = storageRef.child("ImagesUsers").child(user.getNameIMGUser());
                                             desertRef.delete();
                                             HashMap hashMap = new HashMap();
                                             hashMap.put(user.getId(), user1);
