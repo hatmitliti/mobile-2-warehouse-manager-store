@@ -64,7 +64,8 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"></activity>
+            android:exported="true"
+            android:theme="@style/Theme.WarehousemanagerMain"></activity>
         <activity
             android:name=".ImportGoodsActivity"
             android:exported="true" />
