@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.warehousemanager.Dialog.LoadingDialog;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -81,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void checkLogin() {
+        LoadingDialog loadingDialog = new LoadingDialog(this);
         String email = edtEmail.getText().toString().trim();
         String password = edtPassword.getText().toString().trim();
         if (email.isEmpty()) {
@@ -88,15 +90,16 @@ public class LoginActivity extends AppCompatActivity {
         } else if (password.isEmpty()) {
             edtPassword.setError("Trường mật khẩu đang trống!");
         } else {
+            loadingDialog.startLoadingDialog();
             auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()) {
-
                         FirebaseDatabase.getInstance().getReference("admin").addChildEventListener(new ChildEventListener() {
                             @Override
                             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                                 if (dataSnapshot.getKey().equals(auth.getUid())){
+                                    loadingDialog.endLoadingDialog();
                                     startActivity(new Intent(LoginActivity.this, MainActivity.class));
                                 }
                             }
