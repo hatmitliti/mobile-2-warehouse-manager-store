@@ -7,10 +7,8 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.warehousemanager.Category.Category;
-
 public class MainActivity extends AppCompatActivity {
-    ImageView imgXuatHang,imgNhapHang, imgThongKe,imgKhachHang, imgSanPham,imgLoaiSanPham, imgHangSanXuat;
+    ImageView imgBill, imgNhapHang, imgThongKe, imgKhachHang, imgSanPham, imgLoaiSanPham, imgHangSanXuat, imageView2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,58 +18,73 @@ public class MainActivity extends AppCompatActivity {
         setControll();
         setEvent();
     }
+
     private void setEvent() {
-        imgXuatHang.setOnClickListener(new View.OnClickListener() {
+        imgBill.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,ExportActivity.class);
+                Intent intent = new Intent(MainActivity.this, BillActivity.class);
                 startActivity(intent);
             }
-        }); imgNhapHang.setOnClickListener(new View.OnClickListener() {
+        });
+        imgNhapHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,ImportGoodsActivity.class);
+                Intent intent = new Intent(MainActivity.this, ImportGoodsActivity.class);
                 startActivity(intent);
             }
-        }); imgKhachHang.setOnClickListener(new View.OnClickListener() {
+        });
+        imgKhachHang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,CustomerActivity.class);
+                Intent intent = new Intent(MainActivity.this, CustomerActivity.class);
                 startActivity(intent);
             }
-        }); imgThongKe.setOnClickListener(new View.OnClickListener() {
+        });
+        imgThongKe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,StatisticsActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(), ThongKeActivity.class));
             }
-        }); imgSanPham.setOnClickListener(new View.OnClickListener() {
+        });
+        imgSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,ProductActivity.class);
+                Intent intent = new Intent(MainActivity.this, ProductActivity.class);
                 startActivity(intent);
             }
-        }); imgLoaiSanPham.setOnClickListener(new View.OnClickListener() {
+        });
+        imgLoaiSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ProductCategory.class);
                 startActivity(intent);
             }
-        }); imgHangSanXuat.setOnClickListener(new View.OnClickListener() {
+        });
+        imgHangSanXuat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,ManufacturerProduct.class);
+                Intent intent = new Intent(MainActivity.this, ManufacturerProduct.class);
+                startActivity(intent);
+            }
+        });
+        imageView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, UserVip.class);
                 startActivity(intent);
             }
         });
     }
+
     private void setControll() {
-        imgXuatHang = findViewById(R.id.imgExport);
+        imgBill = findViewById(R.id.imgBill);
         imgNhapHang = findViewById(R.id.imgImport);
         imgThongKe = findViewById(R.id.imgStatistics);
         imgKhachHang = findViewById(R.id.imgCustomer);
         imgLoaiSanPham = findViewById(R.id.imgCategory);
         imgHangSanXuat = findViewById(R.id.imgManufaturer);
         imgSanPham = findViewById(R.id.imgProduct);
+        imageView2 = findViewById(R.id.imageView2);
     }
 }

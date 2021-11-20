@@ -4,33 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ManufacturerProduct"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ManufacturerProduct">
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FF5722"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Quản Lí Hãng Đồ Uống" />
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/backProductManufacturer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Quản Lí Hãng Đồ Uống"
-            android:textSize="30dp"
-            android:layout_gravity="center"
-            android:textStyle="bold"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="8"
+            android:gravity="center|left"
+            android:text="Tên: "
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/edtTenHangProductManufacturer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2" />
+
     </LinearLayout>
 
-
-    <EditText
-        android:id="@+id/edtTenHangProductManufacturer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 
     <LinearLayout
         android:layout_width="match_parent"

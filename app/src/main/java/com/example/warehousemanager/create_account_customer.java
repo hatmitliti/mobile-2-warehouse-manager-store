@@ -3,6 +3,7 @@ package com.example.warehousemanager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.content.Intent;
@@ -40,7 +41,7 @@ public class create_account_customer extends AppCompatActivity {
 
     private de.hdodenhof.circleimageview.CircleImageView imgUser;
     private EditText edtEmail,edtPassword,edtRePassword,edtNameUser,edtPhone,edtAddress;
-    private Button btnTaoTaiKhoan,btnBack;
+    private Button btnTaoTaiKhoan;
     FirebaseAuth firebaseAuth;
     private int RESULT_LOAD_IMAGE = 1;
     private Context context;
@@ -49,6 +50,23 @@ public class create_account_customer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_create_account_customer);
+
+        // toolbarr
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+
+
+
         setControll();
         setEvent();
     }
@@ -99,14 +117,6 @@ public class create_account_customer extends AppCompatActivity {
             }
         });
 
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(create_account_customer.this,CustomerActivity.class);
-                startActivity(intent);
-            }
-        });
-
     }
 
     @Override
@@ -129,6 +139,7 @@ public class create_account_customer extends AppCompatActivity {
                        {
                            Toast.makeText(create_account_customer.this, "Đăng Ký Thành Công", Toast.LENGTH_SHORT).show();
                            addValueDataBaseRealTime();
+                           onBackPressed();
                        }else
                        {
                            Toast.makeText(create_account_customer.this, "Đăng Ký Không Thành Công", Toast.LENGTH_SHORT).show();
@@ -145,7 +156,7 @@ public class create_account_customer extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         String imageName = "image" + calendar.getTimeInMillis() + ".png";
         // Create a reference to "mountains.jpg"
-        StorageReference mountainsRef = storageRef.child("UserImage/"+imageName);
+        StorageReference mountainsRef = storageRef.child("ImagesUsers/"+imageName);
         // Get the data from an ImageView as bytes
         imgUser.setDrawingCacheEnabled(true);
         imgUser.buildDrawingCache();
@@ -158,7 +169,7 @@ public class create_account_customer extends AppCompatActivity {
         uploadTask.addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
-                Toast.makeText(context, "Đã Xảy Ra Lỗi Không Thể Thêm Sản Phẩm", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Đã Xảy Ra Lỗi Không Thể Thêm Người Dùng", Toast.LENGTH_SHORT).show();
                 // Handle unsuccessful uploads
             }
         }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -182,7 +193,6 @@ public class create_account_customer extends AppCompatActivity {
                                 //createNewPost(imageUrl);
                                 User user = new User(id,name,email,phone,"Đồng",address,imageURL,imageName,0);
                                 databaseReference.child("user").child(firebaseAuth.getUid()).setValue(user);
-                                Toast.makeText(context, "Thêm Sản Phẩm Thành Công", Toast.LENGTH_SHORT).show();
                                 setTextEmpty();
                             }
                         });
@@ -210,7 +220,6 @@ public class create_account_customer extends AppCompatActivity {
         edtPhone = findViewById(R.id.edtPhoneUserLayoutCreateUser);
         edtAddress = findViewById(R.id.edtAddressUserLayoutCreateUser);
         btnTaoTaiKhoan = findViewById(R.id.btnTaoTaiKhoanNguoiDung);
-        btnBack = findViewById(R.id.backLayoutCreateUser);
         imgUser = findViewById(R.id.imgCreateUser);
     }
 

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.warehousemanager.User.User;
 import com.example.warehousemanager.User.UserAdapter;
@@ -30,13 +31,30 @@ public class CustomerActivity extends AppCompatActivity {
     private UserAdapter userAdapter;
     private ListView lvListUser;
     private DatabaseReference databaseReference;
-    private Button btnBack,btnThemTaiKhoan,btnTim;
+    private Button btnThemTaiKhoan,btnTim;
     private ArrayList<String> mkey = new ArrayList<>();
     private EditText edtTim;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_customer);
+
+
+
+        // toolbarr
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_baseline_arrow_back_24);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
+
+
+
         setControll();
         setEvent();
     }
@@ -66,7 +84,8 @@ public class CustomerActivity extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                userArrayList.remove(dataSnapshot.getValue(User.class));
+                int index = mkey.indexOf(dataSnapshot.getKey());
+                userArrayList.remove(index);
                 userAdapter.notifyDataSetChanged();
                 mkey.remove(dataSnapshot.getKey());
             }
@@ -79,13 +98,6 @@ public class CustomerActivity extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            }
-        });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(CustomerActivity.this,MainActivity.class);
-                startActivity(intent);
             }
         });
 
@@ -148,7 +160,6 @@ public class CustomerActivity extends AppCompatActivity {
     }
     private void setControll() {
         lvListUser = findViewById(R.id.lvListUser);
-        btnBack = findViewById(R.id.backLayoutCustomer);
         btnThemTaiKhoan = findViewById(R.id.btnThemTaiKhoan);
         edtTim = findViewById(R.id.edtTimUser);
         btnTim = findViewById(R.id.btnTimUser);

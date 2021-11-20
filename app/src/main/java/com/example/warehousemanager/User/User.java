@@ -4,12 +4,12 @@ import java.io.Serializable;
 
 public class User implements Serializable {
     private String id, name, phone, rank,address, imgUser,nameIMGUser,email;
-    private double totalMoney;
+    private int totalMoney;
 
     public User() {
     }
 
-    public User(String id, String name,String email, String phone, String rank, String address, String anhUser, String tenAnhUser, double totalMoney) {
+    public User(String id, String name,String email, String phone, String rank, String address, String anhUser, String tenAnhUser, int totalMoney) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -85,11 +85,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public double getTotalMoney() {
+    public int getTotalMoney() {
         return totalMoney;
     }
 
-    public void setTotalMoney(double totalMoney) {
+    public void setTotalMoney(int totalMoney) {
         this.totalMoney = totalMoney;
     }
 }

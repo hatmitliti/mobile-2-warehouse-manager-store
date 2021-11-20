@@ -7,189 +7,238 @@
     android:orientation="vertical"
     tools:context=".create_account_customer">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="#FF5722"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="Tạo Tài Khoản Người Dùng" />
+
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="130dp"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/backLayoutCreateUser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Back" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Tạo Tài Khoản Người Dùng"
-            android:textSize="30dp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_weight="1"
             android:orientation="vertical">
+
+
             <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/imgCreateUser"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="20dp"
                 android:src="@drawable/user_icon"
                 app:civ_border_color="#FF000000"
-                app:civ_border_width="2dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"/>
+                app:civ_border_width="2dp" />
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
+                android:layout_height="40dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center|left"
+                    android:paddingLeft="5dp"
                     android:text="Email:"
-                    android:textSize="20sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edtEmailLayoutCreateUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:background="@drawable/bg_corner_edt"
+                    android:gravity="center|left"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
+                android:layout_height="40dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="30dp"
-                    android:text="PassWord:"
-                    android:textSize="20sp" />
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center|left"
+                    android:paddingLeft="5dp"
+                    android:text="Password:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edtPasswordLayoutCreateUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:background="@drawable/bg_corner_edt"
-                    android:textSize="20sp"
-                    android:inputType="textPassword"/>
+                    android:gravity="center|left"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
+                android:layout_height="40dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center|left"
+                    android:paddingLeft="5dp"
                     android:text="RePassWord:"
-                    android:textSize="20sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edtRePasswordLayoutCreateUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:background="@drawable/bg_corner_edt"
-                    android:textSize="20sp"
-                    android:inputType="textPassword"/>
+                    android:gravity="center|left"
+                    android:inputType="textPassword"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
+                android:layout_height="40dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center|left"
+                    android:paddingLeft="5dp"
                     android:text="Name User:"
-                    android:textSize="20sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edtNameUserLayoutCreateUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:background="@drawable/bg_corner_edt"
+                    android:gravity="center|left"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
+                android:layout_height="40dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center|left"
+                    android:paddingLeft="5dp"
                     android:text="Phone User:"
-                    android:textSize = "20sp" />
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edtPhoneUserLayoutCreateUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:background="@drawable/bg_corner_edt"
+                    android:gravity="center|left"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
                     android:textSize="20sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="15dp">
+                android:layout_height="100dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="horizontal">
 
                 <TextView
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="30dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="6"
+                    android:gravity="center|left"
+                    android:paddingLeft="5dp"
                     android:text="Address:"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
 
-                    android:textSize = "20sp" />
+                    android:textStyle="bold" />
 
                 <EditText
                     android:id="@+id/edtAddressUserLayoutCreateUser"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_marginRight="10dp"
-                    android:layout_weight="2"
+                    android:layout_weight="3"
                     android:background="@drawable/bg_corner_edt"
-                    android:textSize="20sp"
-                    android:lines="3"/>
+                    android:gravity="center|left"
+                    android:lines="4"
+                    android:paddingLeft="10dp"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/btnTaoTaiKhoanNguoiDung"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tạo Tài Khoản Người Dùng"/>
+
         </LinearLayout>
 
-    </ScrollView>
+
+        <Button
+            android:id="@+id/btnTaoTaiKhoanNguoiDung"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="8.7"
+            android:text="Tạo Tài Khoản Người Dùng" />
+    </LinearLayout>
+
+
 </LinearLayout>
