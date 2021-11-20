@@ -3,28 +3,70 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/drawable/bg_corner_btn.xml" value="0.21614583333333334" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/drawable/bg_corner_edt.xml" value="0.21614583333333334" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_customer.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_export.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_import_goods.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_product.xml" value="0.18" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_statistics.xml" value="0.2" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_customer.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_export.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_import_goods.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_login.xml" value="0.1641025641025641" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_main.xml" value="0.22" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product.xml" value="0.18" />
-        <entry key="..\:/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_statistics.xml" value="0.1641025641025641" />
+        <entry key="..\:/Users/truon/Desktop/Warehousemanager/app/src/main/res/drawable-v24/bg_corner_btn.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/Desktop/Warehousemanager/app/src/main/res/layout/items_customer.xml" value="0.24456521739130435" />
+        <entry key="..\:/Users/truon/Desktop/Warehousemanager/app/src/main/res/layout/layout_main.xml" value="0.24456521739130435" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/layout/item_listview_don_hang_cho.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_customer.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_product_category.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_product_manufacturer.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_statistics.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_import_goods.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_login.xml" value="0.1334853090172239" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2462962962962963" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager-store/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.2462962962962963" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager/app/src/main/res/drawable-v24/bg_corner_btn.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/Desktop/mobile-2-warehouse-manager/app/src/main/res/layout/items_statistics.xml" value="0.23097826086956522" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/drawable-v24/bg_corner_edt.xml" value="0.28615384615384615" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.2953703703703704" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/activity_detail_bill.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/activity_thong_ke.xml" value="0.2604166666666667" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/activity_user_vip.xml" value="0.2667572463768116" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/first_load.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/item_listview_don_hang_cho.xml" value="0.264" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/item_product_bill.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/item_thong_ke_product.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/item_user_vip.xml" value="0.2667572463768116" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_customer.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_export.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_import_goods.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_product.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_product_category.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_product_manufacturer.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_statistics.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_activity.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_cho.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_da_giao.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_da_soan.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_dang_giao.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_create_account_customer.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_customer.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_import_goods.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_login.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_main.xml" value="0.264" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product_category.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product_manufacturer.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_statistics.xml" value="0.2509057971014493" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_update_customer.xml" value="0.26313405797101447" />
+        <entry key="..\:/Users/truon/OneDrive/Máy tính/mobile-2-warehouse-manager-store/app/src/main/res/layout/thu_kho_xuat_hang_item.xml" value="0.2509057971014493" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2" />
+      </ProjectState>
+    </option>
   </component>
 </project>
