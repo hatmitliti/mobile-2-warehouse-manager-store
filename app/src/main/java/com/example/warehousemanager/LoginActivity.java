@@ -37,38 +37,38 @@ public class LoginActivity extends AppCompatActivity {
         Mapping();
         setEvent();
 
-        user = auth.getCurrentUser();
-        if (user != null) {
-            FirebaseDatabase.getInstance().getReference("admin").addChildEventListener(new ChildEventListener() {
-                @Override
-                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                    if (dataSnapshot.getKey().equals(auth.getUid())) {
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                    }
-                }
+//        user = auth.getCurrentUser();
+//        if (user != null) {
+//            FirebaseDatabase.getInstance().getReference("admin").addChildEventListener(new ChildEventListener() {
+//                @Override
+//                public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//                    if (dataSnapshot.getKey().equals(auth.getUid())) {
+//                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+//                    }
+//                }
+//
+//                @Override
+//                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                }
+//
+//                @Override
+//                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+//
+//                }
+//
+//                @Override
+//                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
 
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-        }
+//        }
     }
 
     private void setEvent() {

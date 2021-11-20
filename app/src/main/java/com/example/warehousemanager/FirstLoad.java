@@ -13,12 +13,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class FirstLoad extends AppCompatActivity {
-    Animation topAnim, bottomAnim;
-    ImageView image;
-    TextView nhom6, slogan;
-    LinearLayout lnName;
-    private static int SPLASH_SCREEN = 5000;
+//    Animation topAnim, bottomAnim;
+//    ImageView image;
+//    TextView nhom6, slogan;
+//    LinearLayout lnName;
+    private static int SPLASH_SCREEN = 3000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,25 +31,34 @@ public class FirstLoad extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.first_load);
 
-        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
-        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
-
-        image = findViewById(R.id.imageView);
-        nhom6 = findViewById(R.id.nhom6);
-        lnName = findViewById(R.id.lnName);
-
-        image.setAnimation(topAnim);
-        nhom6.setAnimation(topAnim);
-        lnName.setAnimation(bottomAnim);
+//        topAnim = AnimationUtils.loadAnimation(this, R.anim.top_animation);
+//        bottomAnim = AnimationUtils.loadAnimation(this, R.anim.bottom_animation);
+//
+//        image = findViewById(R.id.imageView);
+//        nhom6 = findViewById(R.id.nhom6);
+//        lnName = findViewById(R.id.lnName);
+//
+//        image.setAnimation(topAnim);
+//        nhom6.setAnimation(topAnim);
+//        lnName.setAnimation(bottomAnim);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(FirstLoad.this, LoginActivity.class);
-                startActivity(intent);
+                checklogin();
                 finish();
             }
         },SPLASH_SCREEN);
 
+
+    }
+
+    private void checklogin() {
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        if(mAuth != null){
+            startActivity(new Intent(FirstLoad.this,MainActivity.class));
+        }else {
+            startActivity(new Intent(FirstLoad.this,LoginActivity.class));
+        }
     }
 }
