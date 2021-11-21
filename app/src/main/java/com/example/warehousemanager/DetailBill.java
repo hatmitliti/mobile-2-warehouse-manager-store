@@ -27,6 +27,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 public class DetailBill extends AppCompatActivity {
+    TextView txtNameChiTietDonHang;
+    TextView txtPhoneChiTietDonHang;
+    TextView txtAddressChiTietDonHang;
+    Button btnDienThoai;
+    TextView txtTienThuChiTietDonHang;
+    Button btnFail;
+    Button btnCompleted;
+    ArrayList<ProductBill> list;
+    AdapterProductBill adapterProductBill;
+    ListView lvDetailBill;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,19 +46,19 @@ public class DetailBill extends AppCompatActivity {
         Intent intent = getIntent();
         String id = intent.getStringExtra("id");
 
-        ArrayList<ProductBill> list = new ArrayList<ProductBill>();
-        AdapterProductBill adapterProductBill = new AdapterProductBill(getApplicationContext(), R.layout.item_product_bill, list);
-        ListView lvDetailBill = findViewById(R.id.lvDetailBill);
+        list = new ArrayList<ProductBill>();
+        adapterProductBill = new AdapterProductBill(getApplicationContext(), R.layout.item_product_bill, list);
+        lvDetailBill = findViewById(R.id.lvDetailBill);
         lvDetailBill.setAdapter(adapterProductBill);
 
-        TextView txtNameChiTietDonHang = findViewById(R.id.txtNameChiTietDonHang);
-        TextView txtPhoneChiTietDonHang = findViewById(R.id.txtPhoneChiTietDonHang);
-        TextView txtAddressChiTietDonHang = findViewById(R.id.txtAddressChiTietDonHang);
+        txtNameChiTietDonHang = findViewById(R.id.txtNameChiTietDonHang);
+        txtPhoneChiTietDonHang = findViewById(R.id.txtPhoneChiTietDonHang);
+        txtAddressChiTietDonHang = findViewById(R.id.txtAddressChiTietDonHang);
 
-        Button btnDienThoai = findViewById(R.id.btnDienThoai);
-        TextView txtTienThuChiTietDonHang = findViewById(R.id.txtTienThuChiTietDonHang);
-        Button btnFail = findViewById(R.id.btnFail);
-        Button btnCompleted = findViewById(R.id.btnCompleted);
+        btnDienThoai = findViewById(R.id.btnDienThoai);
+        txtTienThuChiTietDonHang = findViewById(R.id.txtTienThuChiTietDonHang);
+        btnFail = findViewById(R.id.btnFail);
+        btnCompleted = findViewById(R.id.btnCompleted);
 
 
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
@@ -56,7 +66,7 @@ public class DetailBill extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 Bill bill = dataSnapshot.getValue(Bill.class);
-                if (bill.getId().equals(id)) {
+                if (bill.getId().equals(getIntent().getStringExtra("id"))) {
                     txtNameChiTietDonHang.setText(bill.getName());
                     txtPhoneChiTietDonHang.setText(bill.getPhone());
                     txtAddressChiTietDonHang.setText(bill.getAddress());
@@ -135,8 +145,8 @@ public class DetailBill extends AppCompatActivity {
                         switch (which) {
                             case DialogInterface.BUTTON_POSITIVE:
                                 //Yes button clicked
-                                FirebaseDatabase.getInstance().getReference("bills").child(id).removeValue();
-                                FirebaseDatabase.getInstance().getReference("bill_detail").child(id).removeValue();
+                                FirebaseDatabase.getInstance().getReference("bills").child(getIntent().getStringExtra("id")).removeValue();
+                                FirebaseDatabase.getInstance().getReference("bill_detail").child(getIntent().getStringExtra("id")).removeValue();
                                 Toast.makeText(getApplicationContext(), "Đã hủy", Toast.LENGTH_SHORT).show();
                                 onBackPressed();
                                 break;
@@ -158,13 +168,7 @@ public class DetailBill extends AppCompatActivity {
         btnCompleted.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseDatabase.getInstance().getReference("bills").child(id).child("status").setValue(1);
-
-
-
-
-
-
+                FirebaseDatabase.getInstance().getReference("bills").child(getIntent().getStringExtra("id")).child("status").setValue(1);
 
 
                 onBackPressed();

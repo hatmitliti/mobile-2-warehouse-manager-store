@@ -139,7 +139,6 @@ public class create_account_customer extends AppCompatActivity {
                        {
                            Toast.makeText(create_account_customer.this, "Đăng Ký Thành Công", Toast.LENGTH_SHORT).show();
                            addValueDataBaseRealTime();
-                      onBackPressed();
                        }else
                        {
                            Toast.makeText(create_account_customer.this, "Đăng Ký Không Thành Công", Toast.LENGTH_SHORT).show();
@@ -154,7 +153,7 @@ public class create_account_customer extends AppCompatActivity {
         StorageReference storageRef = storage.getReference();
         //
         Calendar calendar = Calendar.getInstance();
-        String imageName = "image" + calendar.getTimeInMillis() + ".png";
+        final String imageName = "image" + calendar.getTimeInMillis() + ".png";
         // Create a reference to "mountains.jpg"
         StorageReference mountainsRef = storageRef.child("ImagesUsers/"+imageName);
         // Get the data from an ImageView as bytes
@@ -193,7 +192,7 @@ public class create_account_customer extends AppCompatActivity {
                                 //createNewPost(imageUrl);
                                 User user = new User(id,name,email,phone,"Đồng",address,imageURL,imageName,0);
                                 databaseReference.child("user").child(firebaseAuth.getUid()).setValue(user);
-                             //   Toast.makeText(context, "Thành Công", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context, "Thành Công", Toast.LENGTH_SHORT).show();
                                 setTextEmpty();
                             }
                         });

@@ -13,6 +13,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.warehousemanager.Adapter.AdapterBill;
 import com.example.warehousemanager.Object.Bill;
+import com.example.warehousemanager.Object.ProductBill;
+import com.example.warehousemanager.Product.Product;
 import com.example.warehousemanager.User.User;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -91,7 +93,7 @@ public class BillActivityDaGiao extends AppCompatActivity {
 
         lvBill.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
                 // tăng tiền mua cho người dùng:
                 if (list.get(i).getStatus() == 4) {
                     Toast.makeText(getApplicationContext(), "Bạn đã xác nhận đơn hàng này", Toast.LENGTH_SHORT).show();
@@ -112,16 +114,85 @@ public class BillActivityDaGiao extends AppCompatActivity {
                                 // 50tr: Vàng
                                 // 20tr: Bạc
                                 String hang = "Đồng";
-                                if (tong>=100000000){
+                                if (tong >= 100000000) {
                                     hang = "VIP";
-                                }else if (tong>=50000000){
+                                } else if (tong >= 50000000) {
                                     hang = "Vàng";
 
-                                }else  if (tong>=20000000){
-                                    hang="Bạc";
+                                } else if (tong >= 20000000) {
+                                    hang = "Bạc";
                                 }
                                 FirebaseDatabase.getInstance().getReference("user").child(user.getId()).child("rank")
                                         .setValue(hang);
+                                // trừ số lượng sp ra:
+                                FirebaseDatabase.getInstance().getReference("bill_detail").child(list.get(i).getId())
+                                        .addChildEventListener(new ChildEventListener() {
+                                            @Override
+                                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                                                final ProductBill productBill = dataSnapshot.getValue(ProductBill.class);
+
+                                                FirebaseDatabase.getInstance().getReference("products")
+                                                        .addChildEventListener(new ChildEventListener() {
+                                                            @Override
+                                                            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+                                                                Product product = dataSnapshot.getValue(Product.class);
+
+                                                                if (product.getId().equals(productBill.getId())) {
+                                                                    int stock = product.getStock();
+                                                                    int sold = product.getSold();
+                                                                    int quality = productBill.getQuality();
+
+                                                                    FirebaseDatabase.getInstance().getReference("products")
+                                                                            .child(product.getId()).child("stock").setValue(stock - quality);
+
+                                                                    FirebaseDatabase.getInstance().getReference("products")
+                                                                            .child(product.getId()).child("sold").setValue(quality + sold);
+                                                                }
+                                                            }
+
+                                                            @Override
+                                                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                            }
+
+                                                            @Override
+                                                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                                            }
+
+                                                            @Override
+                                                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                                            }
+
+                                                            @Override
+                                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                                            }
+                                                        });
+
+                                            }
+
+                                            @Override
+                                            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                            }
+
+                                            @Override
+                                            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
+
+                                            }
+
+                                            @Override
+                                            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+
+                                            }
+
+                                            @Override
+                                            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                                            }
+                                        });
                             }
                         }
 

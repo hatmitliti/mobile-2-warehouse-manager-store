@@ -84,8 +84,7 @@ public class CustomerActivity extends AppCompatActivity {
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-                int index = mkey.indexOf(dataSnapshot.getKey());
-                userArrayList.remove(index);
+                userArrayList.remove(dataSnapshot.getValue(User.class));
                 userAdapter.notifyDataSetChanged();
                 mkey.remove(dataSnapshot.getKey());
             }

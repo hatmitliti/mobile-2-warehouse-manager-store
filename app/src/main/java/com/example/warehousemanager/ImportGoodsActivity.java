@@ -37,7 +37,7 @@ public class ImportGoodsActivity extends AppCompatActivity {
     Button btnThemNhapHang;
     Button btnNhapHang;
     ListView lvNhapHang;
-
+    ArrayAdapter adapter;  AdapterImportProduct adapterImportProduct;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,13 +61,13 @@ public class ImportGoodsActivity extends AppCompatActivity {
         getDataProduct();
 
 
-        ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listProductString);
+         adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, listProductString);
         spTenSachNhapHang.setAdapter(adapter);
         listProductQualityImport = new ArrayList<>();
         listProductIDImport = new ArrayList<>();
         listProductStringImport = new ArrayList<>();
 
-        AdapterImportProduct adapterImportProduct = new AdapterImportProduct(this, R.layout.thu_kho_xuat_hang_item, listProductQualityImport, listProductIDImport, listProductStringImport);
+         adapterImportProduct = new AdapterImportProduct(this, R.layout.thu_kho_xuat_hang_item, listProductQualityImport, listProductIDImport, listProductStringImport);
         lvNhapHang.setAdapter(adapterImportProduct);
 
         btnThemNhapHang.setOnClickListener(new View.OnClickListener() {

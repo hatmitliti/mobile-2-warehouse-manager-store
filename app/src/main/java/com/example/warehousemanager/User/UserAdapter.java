@@ -74,7 +74,7 @@ public class UserAdapter extends BaseAdapter {
         }
         viewHolder.tvTenUser.setText(data.get(i).getName());
 
-        User user = data.get(i);
+        final User user = data.get(i);
         viewHolder.btnUpdateUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
