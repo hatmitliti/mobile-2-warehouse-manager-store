@@ -57,18 +57,24 @@ public class BillActivityCho extends AppCompatActivity {
                     for (int i = 0; i < list.size(); i++) {
                         if (list.get(i).getId().equals(bill.getId()))
                             if (list.get(i).getId().equals(bill.getId())) {
-                                list.remove(bill);
+                                list.remove(i);
+                                adapterBill.notifyDataSetChanged();
                             }
                     }
                 }
-                adapterBill.notifyDataSetChanged();
+
             }
 
             @Override
             public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
                 Bill bill = dataSnapshot.getValue(Bill.class);
-                list.remove(bill);
-                adapterBill.notifyDataSetChanged();
+                for (int i = 0; i < list.size(); i++) {
+                    if (list.get(i).getId().equals(bill.getId()))
+                        if (list.get(i).getId().equals(bill.getId())) {
+                            list.remove(i);
+                            adapterBill.notifyDataSetChanged();
+                        }
+                }
             }
 
             @Override
