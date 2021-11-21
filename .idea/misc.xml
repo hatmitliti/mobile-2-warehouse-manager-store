@@ -3,6 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/activity_detail_bill.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/activity_user_vip.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/item_listview_don_hang_cho.xml" value="0.33" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/item_user_vip.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_customer.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/items_export.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_activity.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_cho.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_da_giao.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_da_soan.xml" value="0.25" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_bill_dang_giao.xml" value="0.2" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_create_account_customer.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_customer.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_login.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product_category.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_product_manufacturer.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/layout_update_customer.xml" value="0.209375" />
+        <entry key="..\:/7.Git/mobile-2-warehouse-manager-store/app/src/main/res/layout/thu_kho_xuat_hang_item.xml" value="0.209375" />
         <entry key="..\:/Users/truon/Desktop/Warehousemanager/app/src/main/res/drawable-v24/bg_corner_btn.xml" value="0.28615384615384615" />
         <entry key="..\:/Users/truon/Desktop/Warehousemanager/app/src/main/res/layout/items_customer.xml" value="0.24456521739130435" />
         <entry key="..\:/Users/truon/Desktop/Warehousemanager/app/src/main/res/layout/layout_main.xml" value="0.24456521739130435" />
