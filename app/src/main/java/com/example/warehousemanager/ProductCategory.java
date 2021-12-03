@@ -24,6 +24,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class ProductCategory extends AppCompatActivity {
     private EditText edtTenLoai;
@@ -123,7 +124,7 @@ public class ProductCategory extends AppCompatActivity {
                     Toast.makeText(context, "Vui Lòng Nhập Dữ Liệu Đầy Đủ", Toast.LENGTH_SHORT).show();
                 } else {
                     if (checkLoopData(edtTenLoai.getText().toString())) {
-                        String idCategory = (categories.size() + 1) + "";
+                        String idCategory = UUID. randomUUID(). toString();
                         String name = edtTenLoai.getText().toString();
                         Category category = new Category(idCategory, name);
                         DataCategory.child("categorys").child(idCategory).setValue(category);

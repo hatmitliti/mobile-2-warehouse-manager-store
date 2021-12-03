@@ -8,6 +8,7 @@ import androidx.appcompat.widget.Toolbar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class DetailBill extends AppCompatActivity {
     ArrayList<ProductBill> list;
     AdapterProductBill adapterProductBill;
     ListView lvDetailBill;
+    String phone="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,7 @@ public class DetailBill extends AppCompatActivity {
                 if (bill.getId().equals(getIntent().getStringExtra("id"))) {
                     txtNameChiTietDonHang.setText(bill.getName());
                     txtPhoneChiTietDonHang.setText(bill.getPhone());
+                    phone = bill.getPhone();
                     txtAddressChiTietDonHang.setText(bill.getAddress());
                     txtTienThuChiTietDonHang.setText(bill.getTotalMoney() + "");
                 }
@@ -130,7 +133,8 @@ public class DetailBill extends AppCompatActivity {
         btnDienThoai.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+ phone));
+                startActivity(intent);
             }
         });
 
