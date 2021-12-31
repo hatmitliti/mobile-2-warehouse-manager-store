@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name"></string>
+    <array name="body">
+        <item> </item>
+        <item> </item>
+        <item> </item>
+        <item> </item>
+    </array>
+</resources>
